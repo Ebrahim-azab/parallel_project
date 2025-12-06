@@ -1,4 +1,3 @@
-# parallel_project
 # 🧭 Parallel Pathfinding Visualizer  
 A Java Swing GUI application for visualizing pathfinding algorithms (BFS & Dijkstra) with full support for parallel benchmarking using ExecutorService.
 
@@ -62,6 +61,18 @@ java PathfindingGUI
 - **Run Dijkstra** → Execute Dijkstra  
 - **Random Walls** → Generate random obstacles  
 - **Reset** → Clear everything  
+
+---
+
+## 📸 Screenshots
+
+| **Empty Grid** | **Random Walls** |
+|:---:|:---:|
+| ![Empty Grid](images/Without_Walls.png) | ![Random Walls](images/With_Walls.png) |
+
+| **BFS Execution** | **Dijkstra Execution** |
+|:---:|:---:|
+| ![BFS](images/Using_BFS.png) | ![Dijkstra](images/Using_Dijkstra.png) |
 
 ---
 
