@@ -1,51 +1,121 @@
 # parallel_project
-# 🧭 Pathfinding Visualization & Parallel Processing Engine  
-A Java-based project that visualizes BFS & Dijkstra algorithms in a grid and provides a full parallel pathfinding engine using `ExecutorService` for performance comparison between Sequential and Parallel execution.
+# 🧭 Parallel Pathfinding Visualizer  
+A Java Swing GUI application for visualizing pathfinding algorithms (BFS & Dijkstra) with full support for parallel benchmarking using ExecutorService.
 
 ---
 
-## 🚀 Features
-
-### 🎨 **1. Pathfinding Visualizer (GUI)**
-Implemented in **PathfindingGUI.java**  
-The GUI allows you to:
-- Choose algorithm: **BFS** or **Dijkstra**
-- Set **start** and **end** points on a grid
-- Add and remove **walls**
-- Visualize the algorithm step-by-step  
-- Reset the grid anytime
-
----
-
-### ⚙️ **2. Pathfinding Engine (Worker Thread)**  
-Implemented in **PathfindingTask.java**
-
-- Uses **Callable** (not Runnable) to return the computed path  
-- Fully separated from GUI  
-- No rendering, only pure computation  
-- Supports BFS & Dijkstra  
-- Returns the shortest path as a `List<Point>`
-
-This separation follows best practice (Logic vs. Rendering).
+## 📌 Features
+- Draw a 30×40 grid.
+- Set **Start** and **End** points.
+- Draw or erase **Walls**.
+- Run:
+  - **BFS**
+  - **Dijkstra**
+- Random wall generation.
+- Full grid reset.
+- Parallel Benchmark comparing:
+  - Sequential Execution
+  - Parallel Execution using ExecutorService
 
 ---
 
-### 🧵 **3. Parallel vs Sequential Experiment**
-Implemented in **PathfindingParallelDemo.java**
+## 🗂 Project Structure
 
-This file demonstrates real **Parallel Processing** using:
+parallel_project/
+│
+├── PathfindingGUI.java ← Main GUI
+├── PathfindingEngine.java ← BFS & Dijkstra implementations
+├── PathfindingExecutor.java ← Parallel executor (ExecutorService)
+├── PathfindingTask.java ← A single pathfinding callable task
+├── PathResult.java ← Result object (path, time, visited)
+│
+├── BenchmarkRunner.java ← (Optional) Benchmark launcher
+├── BenchmarkResult.java ← Benchmark data structure
+│
+└── README.md
 
-- `ExecutorService`
-- `FixedThreadPool`
-- `Future<List<Point>>`
 
-The experiment runs:
+---
 
-1. **100 random pathfinding tasks sequentially**  
-   - Using a single thread
+## 🚀 How to Run
 
-2. **100 random pathfinding tasks in parallel**  
-   - Using 4 or 8 threads depending on CPU
+### Requirements
+- Java 8 or higher
+- Any IDE (IntelliJ / Eclipse)  
+Or run from terminal:
 
-Then prints the time cost:
+javac *.java
+java PathfindingGUI
 
+
+---
+
+## 🎮 How to Use the GUI
+### Tools (Top Menu)
+- **Set Start** → Select start point  
+- **Set End** → Select end point  
+- **Draw Wall** → Draw obstacles  
+- **Eraser** → Remove cells  
+
+### Buttons
+- **Run BFS** → Execute BFS  
+- **Run Dijkstra** → Execute Dijkstra  
+- **Random Walls** → Generate random obstacles  
+- **Reset** → Clear everything  
+
+---
+
+## ⚡ Parallel Benchmark
+In the bottom panel:
+
+- **Tasks** → Number of search tasks  
+- **Algo** → BFS or Dijkstra  
+- **Run Parallel Benchmark** → Runs both:
+  - Sequential execution  
+  - Parallel execution  
+
+Output example:
+
+Seq = 120.55 ms
+Par = 38.92 ms
+Speedup = 3.09x
+
+
+---
+
+## 📑 File Descriptions
+
+### PathfindingGUI.java
+- GUI rendering
+- Mouse interaction
+- Runs BFS/Dijkstra
+- Runs benchmark
+
+### PathfindingEngine.java
+- BFS & Dijkstra algorithms
+- Returns PathResult
+
+### PathfindingTask.java
+- One executed search task (Callable)
+
+### PathfindingExecutor.java
+- Manages parallel execution using threads
+
+### PathResult.java
+- Path list
+- Visited nodes count
+- Execution time
+
+### BenchmarkRunner.java
+- Optional external benchmark launcher
+
+---
+
+## 🧑‍💻 Author
+Developed by **Ebrahim Azab**  
+Pathfinding Visualization & Parallel Benchmark System.
+
+---
+
+## ⭐ Support
+If you like this project, consider giving it a ⭐ on GitHub!
